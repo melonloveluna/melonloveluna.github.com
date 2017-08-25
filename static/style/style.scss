@@ -1,0 +1,530 @@
+@mixin bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+@mixin scenebg($height, $src) {
+	width: 100%;
+	height: $height;
+	background-image: url($src);
+	background-size: 100% 100%;
+}
+.page-a {
+	.a_bg {
+		@include bg;
+	}
+	.a_bg_top {
+		@include scenebg(71.6%, '../img/background/a_bg_top.png');
+	}
+	.a_bg_middle {
+		@include scenebg(13.1%, '../img/background/a_bg_middle.png');
+	}
+	.a_bg_bottom {
+		@include scenebg(15.3%, '../img/background/a_bg_bottom.png');
+	}
+	.cloud {
+		position: absolute;
+		z-index: 2;
+	}
+	.cloud-a {
+		width: 181px;
+		height: 101px;
+		top: 15%;
+		background: url('../img/cloud-a.png') no-repeat;
+	}
+	.cloud-b {
+		width: 301px;
+		height: 140px;
+		background: url('../img/cloud-b.png') no-repeat;
+	}
+	.cloud-a-animate {
+		animation-name: small-cloud;
+		animation-duration: 30s;
+		animation-iteration: infinite;
+	}
+	.cloud-b-animate {
+		animation-name: big-cloud;
+		animation-duration: 10s;
+		animation-iteration: infinite;
+	}
+	@keyframes small-cloud {
+		0% {
+			left: -5%;
+		}
+		100% {
+			left: 100%;
+		}
+	}
+	@keyframes big-cloud {
+		0% {
+			left: 10%;
+		}
+		100% {
+			left: -50%;
+		}
+	}
+	.sun {
+		position: absolute;
+		top: -30px;
+		right: 4%;
+		width: 201px;
+		height: 201px;
+		z-index: 1;
+		background: url('../img/sun.png') no-repeat;
+	}
+	.rotation {
+		animation-name: rotation;
+		animation-duration: 30s;
+		animation-fill-mode: both;
+	}
+	@keyframes rotation {
+		0% {
+			transform: translateX(0) translateY(0);
+		}
+		100% {
+			transform: translateX(-2000px) translateY(400px);
+		}
+	}
+}
+.page-b {
+	.b_bg {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		background-image: url('../img/background/b_bg.png');
+		background-size: 100% 100%;
+	}
+	.shop {
+		position: absolute;
+		width: 40%;/*(989-414)/1441*/
+		height: 35.5%;/*(645-327)/901*/
+		left: 28.5%;/*414/1441*/
+		top: 36%;/*327/901*/
+	}
+	.door {
+		/*shop-width: 575;shop-height: 318*/
+		position: absolute;
+		left: 59%;/*(752-414)/575*/
+		top: 33.5%;/*(433-327)/318*/
+		width: 31.5%;/*180/575*/
+		height: 66%;/*212/318*/
+		overflow: hidden;
+	}
+	.left-door {
+		position: absolute;
+		left: 0;
+		width: 50%;
+		height: 100%;
+		background-image: url('../img/left-door.png');
+		background-size: 100% 100%;
+	}
+	.right-door {
+		position: absolute;
+		left: 50%;
+		width: 50%;
+		height: 100%;
+		background-image: url('../img/right-door.png');
+		background-size: 100% 100%;
+	}
+	.lamp {
+		position: absolute;
+		width: 4%;/*(1051 - 996)/1441*/
+		height: 6%;/*(439 - 383)/901*/
+		left: 69%;/*996/1441*/
+		top: 42.5%;/*383/901*/
+		background-image: url('../img/light.png');
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+	}
+	.lamp-bright {
+		background-image: url('../img/dark.png');
+	}
+	.bird {
+		position: absolute;
+		min-width: 91px;
+		min-height: 71px;
+		top: 10%;
+		right: -91px;
+		background: url('../img/bird.png') no-repeat;
+	}
+	.bird-fly {
+		animation-name: bird-fly;
+		animation-duration: 400ms;
+		animation-iteration-count: infinite;
+	   animation-timing-function: step-start;   
+	}
+	@keyframes bird-fly {
+		0% {
+		   background-position: -182px 0px;
+		}
+		50% {
+		   background-position: 0px 0px;
+		}
+		75% {
+		   background-position: -91px 0px;
+		}
+		100% {
+		   background-position: -182px 0px;
+		}
+	}
+}
+.page-c {
+	.c_bg {
+		@include bg;
+	}
+	.c_bg_top {
+		@include scenebg(71.6%, '../img/background/c_bg_top.png');
+	}
+	.c_bg_middle {
+		@include scenebg(13.1%, '../img/background/c_bg_middle.png');
+	}
+	.c_bg_bottom {
+		@include scenebg(15.3%, '../img/background/c_bg_bottom.png');
+	}
+	.girl {
+		position: absolute;
+		width: 151px;
+		height: 291px;
+		background: url('../img/girl.png') -755px 0 no-repeat;
+	}
+	.water-wrap {
+		position: absolute;
+		width: 37%;
+		height: 22%;
+		left: 31.5%;
+		top: 78%;
+		overflow: hidden;
+		border-top-left-radius: 50%;
+		border-top-right-radius: 50%;
+	}
+	.water {
+		position: absolute;
+		animation-name: water-shake;
+		animation-duration: 6s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		background: url('../img/water.png') no-repeat;
+	}
+	.water-a {
+		width: 131px;
+		height: 15px;
+		top: 13%;
+		left: 35%;
+		background-position: -261px 0;
+	}
+	.water-b {
+		width: 161px;
+		height: 9px;
+		top: 30%;
+		left: 45%;
+		background-position: -693px 0;
+		animation-delay: 2s;
+	}
+	.water-c {
+		width: 261px;
+		height: 29px;
+		top: 50%;
+		left: 15%;
+		background-position: 0 0;
+		animation-delay: 1s;
+	}
+	.water-d {
+		width: 301px;
+		height: 12px;
+		top: 75%;
+		left: 30%;
+		background-position: -392px 0;
+		animation-delay: 3s;
+	}
+	.stars {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+	.star {
+		position: absolute;
+		width: 30px;
+		height: 31px;
+		background-image: url('../img/stars.png');
+		animation-name: star-blink;
+		animation-duration: 4s;
+		animation-timing-function: ease-in-out;
+		animation-iteration-count: infinite;
+	}
+	.star-a {
+		top: 20%;
+		left: 30%;
+	}
+	.star-b {
+		top: 15%;
+		left: 20%;
+		animation-delay: 5s;
+	}
+	.star-c {
+		top: 25%;
+		left: 85%;
+		animation-delay: 1s;
+	}
+	.star-d {
+		top: 30%;
+		left: 70%;
+		animation-delay: 4s;
+	}
+	.star-e {
+		top: 25%;
+		left: 20%;
+		animation-delay: 2s;
+	}
+	.star-f {
+		top: 10%;
+		left: 65%;
+		animation-delay: 3s;
+	}
+	.girl-rotate {
+		animation-name: girl-rotate;
+		animation-duration: 850ms;
+		animation-iteration-count: 1;
+		animation-timing-function: step-start;
+		animation-fill-mode: forwards;
+	}
+	.logo {
+		position: absolute;
+		width: 185px;
+		height: 81px;
+		background-image: url('../img/logo.png');
+		top: 3.5%;
+		left: 50%;
+		margin-left: -92.5px;
+		display: none;
+	}
+	.logo-enter {
+		display: block;
+		animation-name: logo-enter;
+		animation-duration: 1s;
+		animation-timing-function: ease-out;
+	}
+	.logo-shake {
+		animation-name: logo-shake;
+		animation-duration: 0.5s;
+	}
+	.flower-box {
+		@include bg;
+		top: 0;
+		left: 0;
+		overflow: hidden;
+	}
+	.flower {
+		position: absolute;
+		width: 41px;
+		height: 41px;
+		top: -41px;
+		background-repeat: no-repeat;
+		background-size: cover;
+		opacity: 0;
+		animation-name: flower;
+		animation-duration: 20s;
+	}
+
+	@keyframes water-shake {
+		0% {
+			transform: translate3d(0, 0, 0);
+		}
+		25% {
+			transform: translate3d(30px, 0, 0);
+		}
+		75% {
+			transform: translate3d(-30px, 0, 0);
+		}
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+		/*0%, 100% {
+			transform: translate3d(0, 0, 0);
+		}
+		10%,
+		30%,
+		50%,
+		70%,
+		90% {
+			transform: translate3d(-30px, 0, 0);
+		}
+		20%,
+		40%,
+		60%,
+		80% {
+			transform: translate3d(30px, 0, 0);
+		}*/
+	}
+	@keyframes star-blink {
+		0%,
+		50%,
+		100% {
+			opacity: 1;
+		}
+		25%,
+		75% {
+			opacity: 0;
+		}
+	}
+	@keyframes girl-rotate {
+		0% {
+			background-position: -604px -0px;
+		}
+		16.7% {
+			background-position: -151px -0px;
+		}
+		33.4% {
+			background-position: -906px -0px;
+		}
+		50.1% {
+			background-position: -0px -0px;
+		}
+		66.8% {
+			background-position: -302px -0px;
+		}
+		83.5% {
+			background-position: -453px -0px;
+		}
+		100% {
+			background-position: -604px -0px;
+		}
+	}
+	@keyframes logo-enter {
+		0% {
+			transform: skewX(-30deg);
+			opacity: 0;
+		}
+		60% {
+			transform: skewX(20deg);
+			opacity: 1;
+		}
+		80% {
+			transform: skewX(-5deg);
+		}
+		100% {
+			transform: none;
+			opacity: 1;
+		}
+	}
+	@keyframes logo-shake {
+		0%,
+		100% {
+			transform: translate3d(0, 0, 0);
+		}
+		10%,
+		30%,
+		50%,
+		70%,
+		90% {
+			transform: translate3d(-5px, 0, 0);
+		}
+		20%,
+		40%,
+		60%,
+		80% {
+			transform: translate3d(10px, 0, 0);
+		}
+	}
+	@keyframes flower {
+		0% {
+			bottom: 100%;
+		}
+		50% {
+			transform: rotate(1080deg);
+		}
+		100% {
+			transform: rotate(0deg);
+		}
+	}
+}
+.pause-walk {
+	animation-play-state: paused;
+}
+.charector {
+	position: absolute;
+	width: 151px;
+	height: 291px;
+	left: 6%;
+	top: 55%;
+	background: url('../img/boy.png') 0px -291px no-repeat;
+}
+.slow-walk {
+   animation-name: boy-walk;
+   animation-duration: 950ms;
+   animation-iteration-count: infinite;
+   animation-timing-function: steps(1, start);
+}
+.boy-flower {
+	animation-name: take-flower;
+	animation-duration: 950ms;
+	animation-iteration-count: infinite;
+   animation-timing-function: step-start;
+}
+.boy-origin {
+	background-position: -150px -0px;
+}
+.boy-rotate {
+	animation-name: boy-rotate;
+	animation-duration: 850ms;
+	animation-iteration-count: 1;
+	animation-timing-function: step-start;
+	animation-fill-mode: forwards;
+}
+@keyframes boy-walk {
+	0% {
+	   background-position: -0px -291px;
+	}
+	25% {
+	   background-position: -602px -0px;
+	}
+	50% {
+	   background-position: -302px -291px;
+	}
+	75% {
+	   background-position: -151px -291px;
+	}
+	100% {
+	   background-position: -0px -291px;
+	}
+}
+@keyframes take-flower {
+	0% {
+		background-position: -453px 0px;
+	}
+	25% {
+		background-position: -904px 0px;
+	}
+	50% {
+		background-position: -453px 0px;
+	}
+	75% {
+		background-position: -753px 0px;
+	}
+	100% {
+		background-position: -300px 0px;
+	}
+}
+@keyframes boy-rotate {
+	0% {
+		background-position: -603px -291px;
+	}
+	16.7% {
+		background-position: -150px -0px;
+	}
+	33.4% {
+		background-position: -453px -291px;
+	}
+	50.1% {
+		background-position: -0px -0px;
+	}
+	66.8% {
+		background-position: -903px -291px;
+	}
+	83.5% {
+		background-position: -753px -291px;
+	}
+	100% {
+		background-position: -603px -291px;
+	}
+}
+

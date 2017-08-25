@@ -1,0 +1,12 @@
+{
+  "name": "valentine",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {},
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "1.9.1",
+    "jquery.transit": "0.9.12",
+    "zepto": "^1.2.0"
+  }
+}

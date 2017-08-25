@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>七夕主题</title>
+	<style type="text/css">
+		html, body, ul, li {
+			margin: 0px;
+			padding: 0px;
+		}
+		html, body, .content, .content_wrap {
+			height: 100%;
+		}
+		ul, li {
+			list-style: none;
+		}
+		.content {
+			position: relative;
+			overflow: hidden;
+		}
+		.content_wrap > .page {
+			position: relative;
+			color: red;
+			float: left;
+		}
+	</style>
+	<link rel="stylesheet" href="./static/style/style.css" type="text/css" />
+</head>
+<body>
+	<div id="content" class="content">
+		<ul class="content_wrap">
+			<li class="page page-a">
+				<div class="a_bg">
+					<div class="a_bg_top"></div>
+					<div class="a_bg_middle"></div>
+					<div class="a_bg_bottom"></div>
+				</div>
+				<div class="cloud-area">
+					<div class="cloud cloud-a cloud-a-animate"></div>
+					<div class="cloud cloud-b cloud-b-animate"></div>
+				</div>
+				<div class="sun rotation"></div>
+			</li>
+			<li class="page page-b">
+				<div class="b_bg"></div>
+				<!-- 灯 -->
+				<div class="lamp"></div>
+				<!-- 商店 -->
+				<div class="shop">
+					<!-- 门 -->
+					<div class="door">
+						<div class="left-door"></div>
+						<div class="right-door"></div>
+					</div>
+				</div>
+				<!-- 鸟 -->
+				<div class="bird bird-fly"></div>
+			</li>
+			<li class="page page-c">
+				<div class="c_bg">
+					<div class="c_bg_top"></div>
+					<div class="c_bg_middle"></div>
+					<div class="c_bg_bottom"></div>
+				</div>
+				<div class="logo"></div>
+				<div class="girl"></div>
+				<div class="water-wrap">
+					<div class="water water-a"></div>
+					<div class="water water-b"></div>
+					<div class="water water-c"></div>
+					<div class="water water-d"></div>
+				</div>
+				<div class="stars">
+					<div class="star star-a"></div>
+					<div class="star star-b"></div>
+					<div class="star star-c"></div>
+					<div class="star star-d"></div>
+					<div class="star star-e"></div>
+					<div class="star star-f"></div>
+				</div>
+				<div class="flower-box"></div>
+			</li>
+		</ul>
+		<div id="boy" class="charector slow-walk"></div>
+	</div>
+	<!-- <script type="text/javascript" src="./node_modules/zepto/dist/zepto.min.js"></script> -->
+	<script type="text/javascript" src="./node_modules/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="./node_modules/jquery.transit/jquery.transit.js"></script>
+	<script type="text/javascript" src="./static/javascript/animate.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			var swiper = slide($container);
+			
+			var boy = boyAction();
+			boy.walkTo(config.dura.walkInA, 0.6)
+			.then(function() {
+				//切到第二页
+				swiper.moveTo(config.dura.walkToB, 1);
+				//走到页面中间
+				return boy.walkTo(config.dura.walkToB, 0.5);
+			})
+			.then(function() {
+				//鸟扑扇翅膀
+				bird.fly();
+			})
+			.then(function() {
+				//暂停走路
+				boy.pauseWalk();
+			})
+			.then(function() {
+				//进出商店一系列动画
+				return boyToShop(boy);
+			})
+			.then(function() {
+				//切到第三页
+				girl.initial();
+				swiper.moveTo(config.dura.walkToC, 2);
+				return boy.walkTo(config.dura.walkToC, 0.15)
+			})
+			.then(function() {
+				var walkY = girl.position().top / visualHeight;
+				return boy.walkTo(config.dura.walkToBridge, 0.25, walkY);
+			})
+			.then(function() {
+				var walkX = (girl.position().left - boyWidth - distanceX + (girl.width() / 5)) / visualWidth;
+				return boy.walkTo(config.dura.walkInBridge, walkX);
+			})
+			.then(function() {
+				boy.reset();
+			})
+			.then(function() {
+				setTimeout(function() {
+					girl.rotate();
+					boy.rotate(function() {
+						logo.run();
+						flower();
+					})
+				}, config.dura.waitRotate);
+			});
+		});
+	</script>
+</body>
+</html>
